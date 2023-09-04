@@ -1,0 +1,94 @@
+BoxLayout:
+    orientation: 'vertical'
+    
+    ScreenManager:
+        id: screen_manager
+        
+        #pagina de login
+        Screen:
+            name: 'login'
+            
+            BoxLayout:
+                orientation: 'vertical'
+                padding: dp(48)  
+                
+                Image:
+                    source: 'assets/logo.png'
+
+                MDTextField:
+                    id: username
+                    hint_text: "Nome de usuário"
+                    helper_text: "ou endereço de e-mail"
+                    helper_text_mode: "on_focus"
+                    
+                MDTextField:
+                    id: password
+                    hint_text: "Senha"
+                    password: True
+                    
+                Button:
+                    text: "Login"
+                    size_hint: None, None  # Use size_hint para dimensionar o botão
+                    size: dp(120), dp(48)  # Use dp para dimensionar o tamanho do botão
+                    on_release: app.login(username.text, password.text)
+
+
+        #pagina inicial (menu)            
+        Screen:
+            name: 'menu'
+            
+            BoxLayout:
+                orientation: 'vertical'  # 'horizontal' ou 'vertical' para orientação
+                size_hint_y: 0.75
+                spacing: dp(15)  # Espaçamento entre os widgets dentro do layout
+                padding: [dp(15), dp(15), dp(15), dp(35)]
+                
+                Image:
+                    source: 'assets/logo.png'
+
+                Button:
+                    text: "Dados entrada de pesca"
+                    background_color: 120/255, 173/255, 173/255, 1  # Define a cor de fundo
+                    padding: dp(10)  # Define o preenchimento
+                    on_release: app.entradas_barcos()
+
+                Button:
+                    text: "Suporte"
+                    background_color: 120/255, 173/255, 173/255, 1  # Define a cor de fundo
+                    padding: dp(10)  # Define o preenchimento
+  
+                Button:
+                    text: "Relatórios BI"
+                    background_color: 120/255, 173/255, 173/255, 1  # Define a cor de fundo
+                    padding: dp(10)  # Define o preenchimento
+
+                Button:
+                    text: "Sair"
+                    size_hint: None, None  # Use size_hint para dimensionar o botão
+                    size: dp(120), dp(48)  # Use dp para dimensionar o tamanho do botão
+                    on_release: app.logout()
+        
+        #pagina de dados de entrada
+        Screen:
+            name: 'dados_entradas_barcos'
+
+            BoxLayout:
+                orientation: 'vertical'  # 'horizontal' ou 'vertical' para orientação
+                size_hint_y: 0.75
+                spacing: dp(15)  # Espaçamento entre os widgets dentro do layout
+                padding: [dp(15), dp(15), dp(15), dp(35)]
+                
+                Image:
+                    source: 'assets/logo.png'
+
+                Button:
+                    text: "Dados entrada de pesca"
+                    background_color: 120/255, 173/255, 173/255, 1  # Define a cor de fundo
+                    padding: dp(10)  # Define o preenchimento
+                
+                Button:
+                    text: "Voltar"
+                    size_hint: None, None  # Use size_hint para dimensionar o botão
+                    size: dp(120), dp(48)  # Use dp para dimensionar o tamanho do botão
+                    on_release: app.menu()
+        
